@@ -38,10 +38,10 @@ app.post('/api/friends', function(req, res){
         return Math.min.apply(null, this);
       };
     
-    for (var i=0; i<difference; i++) {
-      for (var i=0; i<difference.length; i++) {
+     for (var i=0; i<difference.length; i++) {
+      if (difference.min() == difference[i]) {
         res.json(friends[i]);
-        return;
+        return (match);
     
       }
     }
