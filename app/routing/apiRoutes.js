@@ -31,7 +31,7 @@ app.post('/api/friends', function(req, res){
     }
     
     for (var i=0; i<friendsScores.length; i++) {
-      difference[i] = Math.abs(newFriendScore-friendScores[i]);
+      difference[i] = Math.abs(newFriendScore-friendsScores[i]);
     }
     
     Array.prototype.min = function() {
@@ -39,7 +39,7 @@ app.post('/api/friends', function(req, res){
       };
     
     for (var i=0; i<difference; i++) {
-      if (difference.min() == difference[i]) {
+      for (var i=0; i<difference.length; i++) {
         res.json(friends[i]);
         return;
     
