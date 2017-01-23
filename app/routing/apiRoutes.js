@@ -17,39 +17,33 @@ module.exports = function(app) {
 
   // API POST Requests
 
-
+// This is what Node will run when the website sends a post to the server
 app.post('/api/friends', function(req, res){
-  var newFriend = req.body;
-  friends.push(newFriend);
-  res.json(match(newFriend));
-});
-
-//clear functionnnnnsssssssss
-
-app.post("/api/clear", function() {
-  // Empty out the arrays of data duh
-  friends = [];
-
-  console.log(friends);
-});
-
-};
-// somewhat supposed to match with score 
-function match(newFriend){
-
-    var lowestDiff = 50;
-    var match;
-    var diff = 0;
-
-  			for( var i in friends){
-          for(var j in newFriend.scores){
-
-  				diff += Math.abs(parseInt(newFriend.scores[j]) - parseInt(friends[i].scores[j]));
-  			}if(diff <= lowestDiff){
-  				lowestDiff = diff;
-  				match = friends[i];
-  			}
+    // Need 2 arrays for friends scores and the difference between friends scores - user score
+    var friendsScores = [];
+    var difference = [];
+    
+    var newFriendScore = eval(req.body.scores.toString().replace(/,/g,'+'));
+    
+    for (var i=0; i<friends.length; i++) {
+      
+      friendsScores[i] = eval(friends[i].scores.toString().replace(/,/g,'+'));
+    }
+    
+    for (var i=0; i<friendsScores.length; i++) {
+      difference[i] = Math.abs(newFriendScore-friendScores[i]);
+    }
+    
+    Array.prototype.min = function() {
+        return Math.min.apply(null, this);
+      };
+    
+    for (var i=0; i<difference; i++) {
+      if (difference.min() == difference[i]) {
+        res.json(friends[i]);
+        return;
+    
       }
-      console.log(match);
-      return match;
-  }
+    }
+  })
+};

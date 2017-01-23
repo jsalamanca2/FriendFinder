@@ -69,7 +69,7 @@ var friends = [
 		name: "Darren",
 		photo: "http://i.dailymail.co.uk/i/pix/2011/02/10/article-0-0D203DB1000005DC-492_1024x615_large.jpg",
 		scores: [
-		"4",
+		"1",
 		"3",
 		"4",
 		"1",
@@ -85,8 +85,8 @@ var friends = [
 		name: "Harambe (RIP)",
 		photo: "http://static.boredpanda.com/blog/wp-content/uploads/2016/06/gorilla-shot-boy-zookeper-explains-harambe-amanda-odonoughue-cincinnati-zoo-1.jpg",
 		scores: [
-		"4",
-		"4",
+		"1",
+		"1",
 		"2",
 		"3",
 		"2",
